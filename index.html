@@ -1,63 +1,74 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Que Captura</title>
-
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- UPDATED: Using Bebas Neue font for strong, clear uppercase style -->
     <style>
-
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+        
         body {
-
-            display: flex;
-
-            flex-direction: column;
-
-            justify-content: center;
-
-            align-items: center;
-
-            height: 100vh;
-
-            margin: 0;
-
-            font-family: sans-serif;
-
-            text-align: center;
-
+            font-family: 'Bebas Neue', sans-serif;
         }
 
-        h1 {
-
-            font-size: 4em;
-
-            margin-bottom: 20px;
-
+        /* * Custom CSS for the color cycling animation 
+         * Added Yellow and Cyan stops for a richer transition.
+         */
+        @keyframes color-cycle {
+            0%   { color: #ef4444; } /* Red */
+            20%  { color: #f97316; } /* Orange */
+            40%  { color: #facc15; } /* Yellow */
+            60%  { color: #22c55e; } /* Green */
+            80%  { color: #06b6d4; } /* Cyan */
+            100% { color: #8b5cf6; } /* Violet */
         }
 
-        img {
-
-            max-width: 100%; /* Ensures the GIF is responsive */
-
-            height: auto;
-
+        .animated-text {
+            /* Animation for the FILL color */
+            animation: color-cycle 15s infinite alternate; 
+            
+            /* RESTORED: Stroke at 1.5px for black outline contrast */
+            -webkit-text-stroke: 1.5px black;
+            
+            /* This tells the text fill to use the animated 'color' property (the keyframes) */
+            -webkit-text-fill-color: currentcolor;
+            
+            /* Subtle shadow for depth */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
-
     </style>
-
 </head>
+<body class="bg-white text-gray-900 min-h-screen flex items-center justify-center p-4">
 
-<body>
+    <div class="text-center max-w-lg w-full bg-gray-100 p-8 rounded-3xl shadow-2xl border-2 border-gray-200">
+        
+        <!-- Bebas Neue will render this text as uppercase, which should provide the desired capital look -->
+        <h1 class="animated-text text-6xl md:text-8xl font-black mb-10">
+            que captura
+        </h1>
 
-    <h1>Que Captura</h1>
+        <!-- GIF Container -->
+        <div class="w-full max-w-xs mx-auto rounded-xl overflow-hidden shadow-xl transform hover:scale-[1.02] transition duration-300">
+            <!-- 
+                !!! IMPORTANT: Replace the 'src' attribute below with the URL of your desired GIF. 
+                I am using a generic placeholder image URL here.
+            -->
+            <img 
+                src="https://media.tenor.com/n5mbUkU9E00AAAAC/what-a-catch-great-catch.gif" 
+                alt="OOps GIF Machine Broke"
+                class="w-full h-auto object-cover"
+                onerror="this.onerror=null; this.src='https://placehold.co/400x300/e5e7eb/6b7280?text=Insert+Your+GIF+Here'"
+            >
+        </div>
 
-    <img src="https://media.tenor.com/n5mbUkU9E00AAAAC/what-a-catch-great-catch.gif" alt="A GIF that captures something">
+        <p class="mt-8 text-gray-600 text-sm">
+            Edit the 'src' attribute of the image tag above to use your own GIF URL.
+        </p>
+
+    </div>
 
 </body>
-
 </html>
